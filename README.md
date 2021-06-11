@@ -1,0 +1,2 @@
+# cbimg
+Color Balancing Algorithms
