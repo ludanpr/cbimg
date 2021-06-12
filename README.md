@@ -5,10 +5,10 @@
 Python implementation of color balancing algorithms as can be found in:
 https://web.stanford.edu/~sujason/ColorBalancing/index.html
 
-Implemented:
-    [x] grayWorld
-    [x] simplestColorBalance
-    [x] robustAWB
+### Implemented:
+- [x] grayWorld
+- [x] simplestColorBalance
+- [x] robustAWB
 
 ## Image Example
 
