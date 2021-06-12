@@ -1,7 +1,7 @@
 """ File:
-		cb-img.py
+        cbimg.py
 
-	Implements color balancing algorithms.
+Implements color balancing algorithms.
 """
 import numpy as np
 from scipy.stats.mstats import mquantiles
@@ -11,8 +11,8 @@ class CBImg:
     """
     Implemented Public Methods:
     - grayWorld
-	- simplestColorBalance
-	- robustAWB
+    - simplestColorBalance
+    - robustAWB
 
     Every public method expects an RGB image and returns an RGB image.
     """
@@ -39,7 +39,7 @@ class CBImg:
 
     def __XYZ_to_xy(self, xyz):
         """
-		Converts CIE XYZ to xy chromaticity.
+        Converts CIE XYZ to xy chromaticity.
         """
         X = xyz[0:1][0]
         Y = xyz[1:2][0]
@@ -49,7 +49,7 @@ class CBImg:
     def __xy_to_XYZ(self, xy, Y):
         """
         Converts xyY chromaticity to CIE XYZ.
-		"""
+        """
         x = xy[0]
         y = xy[1]
         return np.array([[(Y/y * x), Y, Y/y * (1 - x - y)]], dtype='float64')
@@ -99,11 +99,11 @@ class CBImg:
         retsolution, _, _, _ = np.linalg.lstsq(self.__sRGBtoXYZ, solution, rcond=None)
         return np.dot(retsolution, self.__sRGBtoXYZ)
 
-	#############################################
-	#############################################
+    #############################################
+    #############################################
 
-	#############################################
-	# Public Methods                            #
+    #############################################
+    # Public Methods                            #
     #############################################
 
     def grayWorld(self, img, *, cat_type="vonKries", max_iter=1):
@@ -119,10 +119,10 @@ class CBImg:
 			              * sharp
 			              * cmccat2000
 			              * cat02
-		\param max_iter maximum number of iterations
+        \param max_iter maximum number of iterations
 
         \return The image @c img with its colors balanced
-		"""
+        """
         assert type(img) is np.ndarray, 'img is not numpy.ndarray'
         assert len(img.shape) == 3 and img.shape[2] == 3, 'img must be in RGB color scheme'
 
@@ -163,7 +163,7 @@ class CBImg:
                           black and white
 
         \return the image with its colors balanced
-		"""
+        """
         assert type(img) is np.ndarray, 'img is not numpy.ndarray'
         assert len(img.shape) == 3 and img.shape[2] == 3, 'img must be in RGB color scheme'
 
@@ -198,19 +198,19 @@ class CBImg:
         using Chromatic Adaptation Transform or directly adjusting the  channels
         R and B.
 
-		\param img  an RGB image
+        \param img  an RGB image
         \param option  the correction method (RBgain or CAT)
-		\param cat_type  the CAT type used if the option argument is CAT
+        \param cat_type  the CAT type used if the option argument is CAT
 			              * vonKries
 			              * bradford
 			              * sharp
 			              * cmccat2000
 			              * cat02
-		\param thresh  the deviation limit from gray to consider
-		\param max_iter  the maximum number of iterations
+        \param thresh  the deviation limit from gray to consider
+        \param max_iter  the maximum number of iterations
 
         \return the RGB image with its colors balanced
-		"""
+        """
         assert type(img) is np.ndarray, 'img is not numpy.ndarray'
         assert len(img.shape) == 3 and img.shape[2] == 3, 'img must be in RGB color scheme'
 

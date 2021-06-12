@@ -96,5 +96,3 @@ def test_xy_to_XYZ_1():
 
 def test_CAT_1():
     return True
-
-test_xy_to_XYZ_1()
